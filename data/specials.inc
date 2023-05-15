@@ -152,6 +152,8 @@ gSpecials::
 	def_special ShowFieldMessageStringVar4
 	def_special DrawWholeMapView
 	def_special GetPlayerXY
+	def_special SetMewAboveGrass
+	def_special DestroyMewEmergingGrassSprite
 	def_special NullFieldSpecial  @ Mauville/Petalburg Gym specials
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial

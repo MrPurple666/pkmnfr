@@ -2,6 +2,7 @@
 #include "gflib.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "faraway_island.h"
 #include "field_camera.h"
 #include "field_control_avatar.h"
 #include "field_effect.h"
@@ -4306,6 +4307,24 @@ static bool8 CopyablePlayerMovement_GoSpeed0(struct ObjectEvent *objectEvent, st
     s16 y;
 
     direction = playerDirection;
+   if (ObjectEventIsFarawayIslandMew(objectEvent))
+    {
+        direction = GetMewMoveDirection();
+        if (direction == DIR_NONE)
+        {
+            direction = playerDirection;
+            direction = state_to_direction(gInitialMovementTypeFacingDirections[objectEvent->movementType], objectEvent->directionSequenceIndex, direction);
+            ObjectEventMoveDestCoords(objectEvent, direction, &x, &y);
+            ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
+            objectEvent->singleMovementActive = 1;
+            sprite->data[1] = 2;
+            return TRUE;
+        }
+    }
+    else
+    {
+        direction = state_to_direction(gInitialMovementTypeFacingDirections[objectEvent->movementType], objectEvent->directionSequenceIndex, direction);
+    }
     direction = GetCopyDirection(gInitialMovementTypeFacingDirections[objectEvent->movementType], objectEvent->directionSequenceIndex, direction);
     ObjectEventMoveDestCoords(objectEvent, direction, &x, &y);
     ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkNormalMovementAction(direction));
@@ -8689,6 +8708,9 @@ static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *
     u8 i;
 
     if (objEvent->localId == OBJ_EVENT_ID_CAMERA && objEvent->invisible)
+        return;
+
+    if (ObjectEventIsFarawayIslandMew(objEvent) == TRUE && !ShouldMewShakeGrass(objEvent))
         return;
 
     for (i = 0; i < NELEMS(sGroundEffectFuncs); i++, flags >>= 1)

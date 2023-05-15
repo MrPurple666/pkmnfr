@@ -30,3 +30,6 @@ ProgrammableWaveData_10::
 
 ProgrammableWaveData_11::
 	.incbin "sound/programmable_wave_samples/11.pcm"
+
+gProgrammableWaveData_86B4850:: @ 86B4850 from Emerald
+	.incbin "sound/programmable_wave_samples/86B4850.pcm"

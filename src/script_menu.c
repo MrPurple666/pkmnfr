@@ -492,6 +492,34 @@ static const struct MenuAction sMultichoiceList_TrainerTowerMode[] = {
     { gOtherText_Exit }
 };
 
+static const struct MenuAction sScriptMultiChoiceMenu_SeviiFaraway[] = {
+    { gText_SeviiIslands },
+    { gText_FarawayIsland },
+    { gOtherText_Exit }
+};
+
+static const struct MenuAction sScriptMultiChoiceMenu_SeviiNavelFaraway[] = {
+    { gText_SeviiIslands },
+    { gText_NavelRock },
+    { gText_FarawayIsland },
+    { gOtherText_Exit }
+};
+
+static const struct MenuAction sScriptMultiChoiceMenu_SeviiBirthFaraway[] = {
+    { gText_SeviiIslands },
+    { gText_BirthIsland },
+    { gText_FarawayIsland },
+    { gOtherText_Exit }
+};
+
+static const struct MenuAction sScriptMultiChoiceMenu_SeviiNavelBirthFaraway[] = {
+    { gText_SeviiIslands },
+    { gText_NavelRock },
+    { gText_BirthIsland },
+    { gText_FarawayIsland },
+    { gOtherText_Exit }
+};
+
 static const struct MenuAction sMultichoiceList_Exit[] = {
     { gOtherText_Exit }
 };
@@ -562,6 +590,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_62]                                         = MULTICHOICE(sMultichoiceList_62),
     [MULTICHOICE_JOIN_OR_LEAD]                               = MULTICHOICE(sMultichoiceList_JoinOrLead),
     [MULTICHOICE_TRAINER_TOWER_MODE]                         = MULTICHOICE(sMultichoiceList_TrainerTowerMode),
+    [MULTICHOICE_SEVII_FARAWAY]
+    [MULTICHOICE_SEVII_NAVEL_FARAWAY]
+    [MULTICHOICE_SEVII_BIRTH_FARAWAY]
+    [MULTICHOICE_SEVII_NAVEL_BIRTH_FARAWAY]
 };
 
 // From Cool to Berries goes unused
